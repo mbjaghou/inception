@@ -9,6 +9,6 @@ WORKDIR /etc/nginx/ssl/
 RUN touch /etc/nginx/ssl/mbjaghou.key
 RUN touch /etc/nginx/ssl/mbjaghou.crt
 
-CMD [ "bash", "script.sh" ]
+# CMD [ "bash", "script.sh" ]
 # CMD [ "nginx", "-g", "daemon off;" ]
 

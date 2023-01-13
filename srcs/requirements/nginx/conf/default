@@ -1,9 +1,7 @@
 server {
-        listen 80 default_server;
-        listen [::]:80 default_server;
-
         ssl_certificate /etc/nginx/ssl/mbjaghou.crt;
         ssl_certificate_key /etc/nginx/ssl/mbjaghou.key;
+        ssl_protocols TLSv1.3;
         listen 443 ssl default_server;
         listen [::]:443 ssl default_server;
 
