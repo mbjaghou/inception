@@ -1,0 +1,41 @@
+version: '3'
+
+services:
+  mariadb:
+    container_name: db
+    build: ./requirements/mariadb/
+    restart: always
+    volumes:
+      - mariadb:/var/lib/mysql
+    ports:
+      - 3306:3306
+  wordpress:
+    container_name: wperes
+    build: ./requirements/wordpress/
+    depends_on:
+      - mariadb
+    volumes:
+      - wordpress:/var/www/html
+    restart: always
+    ports:
+      - 9000:9000
+  nginx:
+    container_name: nginx
+    build: ./requirements/nginx/
+    volumes:
+      - wordpress:/var/www/html
+    ports:
+      - 443:443
+volumes:
+  mariadb:
+    driver: local
+    driver_opts:
+      type: none
+      device: /Users/mbjaghou/Desktop/incption/srcs/data/mariadb
+      o: bind
+  wordpress:
+    driver: local
+    driver_opts:
+      type: none
+      device: /Users/mbjaghou/Desktop/incption/srcs/data/wordpress
+      o: bind
