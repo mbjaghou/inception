@@ -7,5 +7,5 @@ COPY /tools/script.sh ./
 EXPOSE 3306
 RUN sed -i 's/bind-address/# bind-address/g' /etc/mysql/mariadb.conf.d/50-server.cnf
 
-
-CMD [ "bash", "script.sh" ]
+ENTRYPOINT [ "bash", "script.sh" ]
+CMD [ "mysqld_safe" ]
