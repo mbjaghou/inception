@@ -4,7 +4,7 @@ services:
     container_name: mariadb
     image: mariadb
     build: ./requirements/mariadb/
-    restart: "no"
+    restart: on-failure
     networks:
       - inception
     env_file:
@@ -21,7 +21,7 @@ services:
       - mariadb
     volumes:
       - wordpress:/var/www/html/wordpress/
-    restart: always
+    restart: on-failure
     networks:
       - inception
     env_file:
