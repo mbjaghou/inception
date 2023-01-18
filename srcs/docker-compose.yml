@@ -4,7 +4,7 @@ services:
     container_name: mariadb
     image: mariadb
     build: ./requirements/mariadb/
-    restart: always
+    restart: "no"
     networks:
       - inception
     env_file:
@@ -45,13 +45,13 @@ volumes:
     driver: local
     driver_opts:
       type: none
-      device: /Users/mbjaghou/Desktop/incption/srcs/data/mariadb
+      device: /Users/mbjaghou/Desktop/inception/srcs/data/mariadb
       o: bind
   wordpress:
     driver: local
     driver_opts:
       type: none
-      device: /Users/mbjaghou/Desktop/incption/srcs/data/wordpress
+      device: /Users/mbjaghou/Desktop/inception/srcs/data/wordpress
       o: bind
 networks:
   inception:
