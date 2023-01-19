@@ -1,6 +1,6 @@
 if [ -d "/var/lib/mysql/${MYSQL_DATABASE}" ]
 then
-    echo "========DATABASE ALEARDY EXIST==========="
+    echo "========DATABASE ALREADY EXIST==========="
 else
     service mysql start
     mysql -e "CREATE DATABASE ${MYSQL_DATABASE};"
@@ -12,5 +12,4 @@ else
     mysql -e "ALTER USER '${MYSQL_ROOT_USER}'@'localhost' IDENTIFIED BY '${MYSQL_ROOT_PASSWORD}'; FLUSH PRIVILEGES;";
     mysqladmin -u${MYSQL_ROOT_USER} -p${MYSQL_ROOT_PASSWORD} shutdown
 fi
-mysqld_safe
-# exec "$@"
+exec "$@"
