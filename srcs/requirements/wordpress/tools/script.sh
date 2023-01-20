@@ -2,7 +2,7 @@ if [ -f /var/www/html/wordpress/wp-config.php ]
 then 
     echo "=====wp-config.php exists!====="
 else
-        sleep 3
+        # sleep 3
         # create wp-config file
         wp config create --allow-root --dbname=${MYSQL_DATABASE} \
          --dbuser=${MYSQL_USER} \
