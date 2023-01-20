@@ -7,7 +7,7 @@ server {
         root /var/www/html/wordpress;
         index index.php ;
 
-        # server_name mbjaghou.fr;
+        # server_name mbjaghou.42.fr;
 
         location / {
                 try_files $uri $uri/ /index.php?$args;

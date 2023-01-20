@@ -29,7 +29,7 @@ lc-messages-dir         = /usr/share/mysql
 
 
 
-# bind-address            = 127.0.0.1
+bind-address            = 0.0.0.0
 
 
 
