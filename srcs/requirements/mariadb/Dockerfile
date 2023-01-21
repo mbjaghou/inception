@@ -6,6 +6,6 @@ COPY /tools/script.sh ./
 
 COPY ./conf/50-server.cnf /etc/mysql/mariadb.conf.d/50-server.cnf
 
-ENTRYPOINT [ "bash", "script.sh" ]
+ENTRYPOINT [ "bash", "/script.sh" ]
 
 CMD [ "mysqld_safe" ]

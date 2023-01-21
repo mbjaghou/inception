@@ -10,7 +10,7 @@ else
          --path=${PATH_WP}
 
         #install wordpress and creats an admin user
-        wp core install --url=localhost \
+        wp core install --url=https://localhost \
         --title=${TITLE_WP} \
         --admin_user=${ADMIN} \
         --admin_password=${ADMIN_PASS} \

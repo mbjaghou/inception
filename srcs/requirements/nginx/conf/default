@@ -10,11 +10,14 @@ server {
         # server_name mbjaghou.42.fr;
 
         location / {
-                try_files $uri $uri/ /index.php?$args;
+            try_files $uri $uri/ /index.php?$args;
         }
 
         location ~ \.php$ {
         fastcgi_split_path_info ^(.+\.php)(/.+)$;
+        if (!-f $document_root$fastcgi_script_name) {
+            return 404;
+        }
         fastcgi_pass wordpress:9000;
         fastcgi_index index.php;
         include fastcgi_params;
