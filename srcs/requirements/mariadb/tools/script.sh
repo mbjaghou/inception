@@ -5,10 +5,11 @@ else
     service mysql start;
     sleep 1;
     mysql -e "CREATE DATABASE ${MYSQL_DATABASE};";
-    mysql -e  "CREATE USER  '${MYSQL_USER}'@'%' IDENTIFIED BY '${MYSQL_PASSWORD}';";
+    mysql -e "CREATE USER  '${MYSQL_USER}'@'%' IDENTIFIED BY '${MYSQL_PASSWORD}';";
     mysql -e "GRANT ALL PRIVILEGES ON ${MYSQL_DATABASE}.* TO '${MYSQL_USER}'@'%';";
     mysql -e "FLUSH PRIVILEGES;";
-    mysql -e "ALTER USER '${MYSQL_ROOT_USER}'@'localhost' IDENTIFIED BY '${MYSQL_ROOT_PASSWORD}';";
-    mysqladmin -u${MYSQL_ROOT_USER} -p${MYSQL_ROOT_PASSWORD} shutdown;
+    mysql -e "SET PASSWORD FOR '${MYSQL_ROOT_USER}'@'localhost' = PASSWORD('${MYSQL_ROOT_PASSWORD}');";
+    kill `cat /var/run/mysqld/mysqld.pid`
+    sleep 2;
 fi
-exec "$@"
+mysqld_safe

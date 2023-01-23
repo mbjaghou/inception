@@ -2,7 +2,6 @@ FROM debian:buster
 
 RUN apt-get update && apt-get install -y  php-fpm php-mysql mariadb-client wget curl
 
-
 WORKDIR /var/www/html
 RUN cd /var/www/html && wget https://wordpress.org/latest.tar.gz && tar -xzvf latest.tar.gz && rm -rf latest.tar.gz
 

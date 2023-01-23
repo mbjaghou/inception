@@ -10,7 +10,7 @@ server {
         # server_name mbjaghou.42.fr;
 
         location / {
-            try_files $uri $uri/ /index.php?$args;
+            try_files $uri $uri/ =404;
         }
 
         location ~ \.php$ {
