@@ -9,7 +9,7 @@ else
     mysql -e "GRANT ALL PRIVILEGES ON ${MYSQL_DATABASE}.* TO '${MYSQL_USER}'@'%';";
     mysql -e "FLUSH PRIVILEGES;";
     mysql -e "SET PASSWORD FOR '${MYSQL_ROOT_USER}'@'localhost' = PASSWORD('${MYSQL_ROOT_PASSWORD}');";
-    kill `cat /var/run/mysqld/mysqld.pid`
+    kill `cat /var/run/mysqld/mysqld.pid`;
     sleep 2;
 fi
 mysqld_safe
