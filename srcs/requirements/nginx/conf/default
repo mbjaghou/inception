@@ -1,18 +1,17 @@
 server {
-        ssl_certificate /etc/nginx/ssl/certificate/mbjaghou.crt;
-        ssl_certificate_key /etc/nginx/ssl/private/mbjaghou.key;
+        ssl_certificate ${PATH_CERTIFICATE};
+        ssl_certificate_key ${PATH_PRIVATE};
         ssl_protocols TLSv1.3;
         listen 443 ssl;
 
-        root /var/www/html/wordpress;
+        root ${PATH_WP};
         index index.php ;
 
-        # server_name mbjaghou.42.fr;
+        server_name ${URL};
 
         location / {
             try_files $uri $uri/ =404;
         }
-
         location ~ \.php$ {
         fastcgi_split_path_info ^(.+\.php)(/.+)$;
         if (!-f $document_root$fastcgi_script_name) {
@@ -22,6 +21,5 @@ server {
         fastcgi_index index.php;
         include fastcgi_params;
         fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
-        fastcgi_param SCRIPT_NAME $fastcgi_script_name;
         }
 }

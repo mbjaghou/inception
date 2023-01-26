@@ -2,6 +2,7 @@ if [ -f /var/www/html/wordpress/wp-config.php ]
 then 
     echo "=====wp-config.php exists!====="
 else
+        sleep 5;
         # Generates and reads the wp-config.php file
         wp config create --allow-root --dbname=${MYSQL_DATABASE} \
          --dbuser=${MYSQL_USER} \
@@ -10,7 +11,7 @@ else
          --path=${PATH_WP}
 
         #install wordpress and creats an admin user
-        wp core install --url=https://localhost \
+        wp core install --url=${URL} \
         --title=${TITLE_WP} \
         --admin_user=${ADMIN} \
         --admin_password=${ADMIN_PASS} \

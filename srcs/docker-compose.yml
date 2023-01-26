@@ -4,7 +4,7 @@ services:
     container_name: mariadb
     image: mariadb
     build: ./requirements/mariadb/
-    restart: on-failure
+    restart: always
     networks:
       - inception
     env_file:
@@ -21,7 +21,7 @@ services:
       - mariadb
     volumes:
       - wordpress:/var/www/html/wordpress/
-    restart: on-failure
+    restart: always
     networks:
       - inception
     env_file:
@@ -34,8 +34,11 @@ services:
     build: ./requirements/nginx/
     networks:
       - inception
+    env_file:
+      - .env
     volumes:
       - wordpress:/var/www/html/wordpress/
+    restart: always
     ports:
       - 443:443
     depends_on:
@@ -45,13 +48,13 @@ volumes:
     driver: local
     driver_opts:
       type: none
-      device: /Users/mbjaghou/Desktop/inception/srcs/data/mariadb
+      device: /home/mbjaghou/data/mariadb/
       o: bind
   wordpress:
     driver: local
     driver_opts:
       type: none
-      device: /Users/mbjaghou/Desktop/inception/srcs/data/wordpress
+      device: /home/mbjaghou/data/wordpress/
       o: bind
 networks:
   inception:
