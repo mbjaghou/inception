@@ -1,4 +1,3 @@
-
 build:
 	mkdir -p /home/mbjaghou/data/mariadb
 	mkdir -p /home/mbjaghou/data/wordpress

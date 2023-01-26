@@ -34,8 +34,6 @@ services:
     build: ./requirements/nginx/
     networks:
       - inception
-    env_file:
-      - .env
     volumes:
       - wordpress:/var/www/html/wordpress/
     restart: always
